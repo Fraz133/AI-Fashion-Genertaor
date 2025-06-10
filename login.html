@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.35;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #eec979, #ACB6E5);
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      width: 320px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 28px;
+      color: #222;
+    }
+
+    input[type="text"], input[type="password"], select {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus {
+      border-color: #5dc99f;
+      outline: none;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #E6521F;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Video Background -->
+  <video class="bg-video" autoplay muted loop>
+    <source src="5708637-uhd_4096_2160_30fps.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- ✅ Login Form -->
+  <div class="container">
+    <h1>Login</h1>
+    <div class="error" id="errorMsg"></div>
+    <input type="text" id="username" placeholder="Enter username" />
+    <input type="password" id="password" placeholder="Enter password" />
+    <select id="userType">
+      <option value="Free">Free</option>
+      <option value="Corporate">Corporate</option>
+    </select>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const userType = document.getElementById("userType").value;
+      const errorDiv = document.getElementById("errorMsg");
+
+      if (!username || !password) {
+        errorDiv.textContent = "Please enter both username and password.";
+        return;
+      }
+
+      // ✅ You can enhance this with real authentication later
+      // Simulate successful login
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("userType", userType);
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
